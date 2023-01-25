@@ -28,6 +28,7 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  border-radius: 20px;
 }
 
 /* Home component start */
@@ -84,6 +85,7 @@ main {
 
 .answers-container {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
@@ -137,4 +139,28 @@ main {
 .check-answers-btn:active {
   transform: scale(1.02);
   box-shadow: 1px 1px 15px 1px rgba(0, 0, 0, 0.24);
+}
+
+.correctAnswer {
+  background-color: #94D7A2;
+  border: none;
+  color: #293264;
+}
+
+.incorrectAnswer {
+  background-color: #F8BCBC;
+  border: none;
+  color: #293264;
+}
+
+.answer-btn:disabled:hover {
+  background-color: unset;
+}
+
+.incorrectAnswer:disabled:hover {
+  background-color: #F8BCBC;
+}
+
+.correctAnswer:disabled:hover {
+  background-color: #94D7A2;
 }

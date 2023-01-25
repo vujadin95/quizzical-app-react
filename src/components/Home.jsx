@@ -6,7 +6,7 @@ import { nanoid } from "nanoid";
 export default function Home({ questions, setQuestions, setStartQuiz }) {
   function startTheQuiz() {
     setStartQuiz((prevState) => !prevState);
-    fetch(`https://opentdb.com/api.php?amount=5&type=multiple`)
+    fetch(`https://opentdb.com/api.php?amount=5&type=multiple&encode=base64`)
       .then((response) => response.json())
       .then((data) => {
         setQuestions(formatDataFromTriviaApi(data.results));

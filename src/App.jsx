@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Home from "./components/Home";
 import Questions from "./components/Questions";
-import { nanoid } from "nanoid";
 
 function App() {
   const [startQuiz, setStartQuiz] = useState(false);
@@ -9,19 +8,23 @@ function App() {
   const [questions, setQuestions] = useState([]);
   const [score, setScore] = useState(0);
 
-  console.log(questions);
-
   // handling check answer button click
-  function handleMainClick() {
+  function handleCheckAnswersClick() {
     let errorMessage = "";
-    if (questions.every((obj) => obj.answered)) {
+    const checkIfAllQuestionsAreAnswered = questions.every(
+      (obj) => obj.answered
+    );
+    if (checkIfAllQuestionsAreAnswered) {
       setAllQuestionAnswered(true);
       setScore(questions.filter((question) => question.isAnswerCorrect).length);
-      errorMessage = "moze";
     } else {
       errorMessage = "e pa nece moci";
     }
-    console.log(errorMessage);
+    alert(errorMessage);
+  }
+
+  function handlePlayAgainClick() {
+    window.location.reload();
   }
 
   const renderQuestionComponents =
@@ -31,6 +34,7 @@ function App() {
         question={question}
         setQuestions={setQuestions}
         key={question.id}
+        allQuestionAnswered={allQuestionAnswered}
       />
     ));
 
@@ -50,35 +54,24 @@ function App() {
         {renderQuestionComponents}
         <div className="result-container">
           {allQuestionAnswered && (
-            <p className="result">You scored {score}/5 correct answers</p>
+            <p className="result">
+              You scored {score}/{questions.length} correct answers
+            </p>
           )}
-          <button onClick={handleMainClick} className="check-answers-btn">
+          <button
+            onClick={
+              !allQuestionAnswered
+                ? handleCheckAnswersClick
+                : handlePlayAgainClick
+            }
+            className="check-answers-btn"
+          >
             {allQuestionAnswered ? "Play again" : "Check answers"}
           </button>
         </div>
       </main>
     );
   }
-
-  // return (
-  //   <main className="container">
-  //         {!startQuiz ? <Home
-  //             questions={questions}
-  //             setQuestions={setQuestions}
-  //             setStartQuiz={setStartQuiz}
-  //           />
-  //         :
-
-  //           {renderQuestionComponents}
-  //           <div>
-  //             <button onClick={handleMainClick} className="check-answers-btn">
-  //               {allQuestionAnswered ? "Play again" : "Check answers"}
-  //             </button>
-  //           </div>
-  //         }
-
-  //   </main>
-  // );
 }
 
 export default App;
