@@ -1,0 +1,140 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #0F0E0E;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Karla', sans-serif;
+  color: #293264;
+
+}
+
+main {
+  background-color: #F5F7FB;
+  min-width: 650px;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 75px 25px;
+  min-height: 500px;
+  background-image: url('./images/top-right-logo.png'), url('./images/bottom-left-logo.png');
+  background-position: top right, bottom left;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Home component start */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-title {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.home-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  margin-top: 0.5em;
+}
+
+.home-btn {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  color: #F5F7FB;
+  background-color: #4D5B9E;
+  border: none;
+  font-size: 1rem;
+  padding: 1em 3.65em;
+  border-radius: 1em;
+  margin-top: 1.75em;
+  cursor: pointer;
+}
+
+.home-btn:hover {
+  background-color: #7b86c0d7;
+}
+
+.home-btn:active {
+  transform: scale(1.02);
+  box-shadow: 1px 1px 15px 1px rgba(0, 0, 0, 0.24);
+}
+
+/* Home component end */
+
+/* Questions component start */
+
+.questions-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 15px 0;
+  border-bottom: 0.79px solid #DBDEF0;
+}
+
+.answers-container {
+  display: flex;
+  gap: 10px;
+}
+
+.answer-btn {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.64rem;
+  padding: 0.4em 1.8em;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0.79px solid #4D5B9E;
+  border-radius: 0.8em;
+}
+
+.answer-btn:hover {
+  background-color: #D6DBF5;
+}
+
+/* Questions component end */
+.result-container {
+  margin-top: 2em;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+}
+
+.result {
+  font-size: 12.8px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+}
+
+.check-answers-btn {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  color: #F5F7FB;
+  background-color: #4D5B9E;
+  border: none;
+  font-size: 0.64rem;
+  padding: 1em 2.15em;
+  border-radius: 1em;
+  cursor: pointer;
+  align-self: center;
+}
+
+.check-answers-btn:hover {
+  background-color: #7b86c0d7;
+}
+
+.check-answers-btn:active {
+  transform: scale(1.02);
+  box-shadow: 1px 1px 15px 1px rgba(0, 0, 0, 0.24);
+}
