@@ -58,7 +58,7 @@ export default function Questions({
 
   return (
     <div className="questions-container">
-      <h3>{atob(question.question)}</h3>
+      <h3 className="question-title">{atob(question.question)}</h3>
       <div className="answers-container">{renderAnswers}</div>
     </div>
   );

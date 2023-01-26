@@ -1,16 +1,18 @@
 import { useState } from "react";
 import Home from "./components/Home";
 import Questions from "./components/Questions";
+import LoadingSpinner from "./components/LoadingSpinner";
 
 function App() {
   const [startQuiz, setStartQuiz] = useState(false);
   const [allQuestionAnswered, setAllQuestionAnswered] = useState(false);
   const [questions, setQuestions] = useState([]);
   const [score, setScore] = useState(0);
+  const [errorMessage, setErrorMessage] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
 
   // handling check answer button click
   function handleCheckAnswersClick() {
-    let errorMessage = "";
     const checkIfAllQuestionsAreAnswered = questions.every(
       (obj) => obj.answered
     );
@@ -18,11 +20,14 @@ function App() {
       setAllQuestionAnswered(true);
       setScore(questions.filter((question) => question.isAnswerCorrect).length);
     } else {
-      errorMessage = "e pa nece moci";
+      setErrorMessage(true);
+      setTimeout(() => {
+        setErrorMessage(false);
+      }, 1500);
     }
-    alert(errorMessage);
   }
-
+  function displayMessage() {}
+  // reload app if play again button is clicked
   function handlePlayAgainClick() {
     window.location.reload();
   }
@@ -58,17 +63,27 @@ function App() {
               You scored {score}/{questions.length} correct answers
             </p>
           )}
-          <button
-            onClick={
-              !allQuestionAnswered
-                ? handleCheckAnswersClick
-                : handlePlayAgainClick
-            }
-            className="check-answers-btn"
-          >
-            {allQuestionAnswered ? "Play again" : "Check answers"}
-          </button>
+          {questions.length > 0 ? (
+            <button
+              disabled={errorMessage}
+              onClick={
+                !allQuestionAnswered
+                  ? handleCheckAnswersClick
+                  : handlePlayAgainClick
+              }
+              className="check-answers-btn"
+            >
+              {allQuestionAnswered ? "Play again" : "Check answers"}
+            </button>
+          ) : (
+            <LoadingSpinner />
+          )}
         </div>
+        {errorMessage && (
+          <p className="error-message">
+            Please provide answers to all questions
+          </p>
+        )}
       </main>
     );
   }

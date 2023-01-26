@@ -5,30 +5,41 @@
 }
 
 body {
-  background-color: #0F0E0E;
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #0F0E0E;
   font-family: 'Karla', sans-serif;
   color: #293264;
+  height: 100vh;
+}
 
+#root {
+  width: 100%;
+  max-width: 720px;
+
+  /* padding: 100px 0; */
 }
 
 main {
   background-color: #F5F7FB;
-  min-width: 650px;
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 40px 75px 25px;
-  min-height: 500px;
+  padding: 25px 75px;
+  min-height: 550px;
   background-image: url('./images/top-right-logo.png'), url('./images/bottom-left-logo.png');
   background-position: top right, bottom left;
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-radius: 20px;
+  border-radius: 10px;
+  position: relative;
+
+}
+
+@media(width <=450px) {
+  main {
+    padding: 15px 45px;
+  }
 }
 
 /* Home component start */
@@ -83,10 +94,22 @@ main {
   border-bottom: 0.79px solid #DBDEF0;
 }
 
+.question-title {
+  font-size: 1rem;
+  font-weight: 700;
+
+}
+
 .answers-container {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  /* flex-wrap: wrap; */
+  gap: 1em;
+}
+
+@media(width <=550px) {
+  .answers-container {
+    flex-wrap: wrap;
+  }
 }
 
 .answer-btn {
@@ -106,7 +129,7 @@ main {
 
 /* Questions component end */
 .result-container {
-  margin-top: 2em;
+  margin-top: 1.25em;
   display: flex;
   justify-content: center;
   gap: 20px;
@@ -164,3 +187,53 @@ main {
 .correctAnswer:disabled:hover {
   background-color: #94D7A2;
 }
+
+.error-message {
+  font-size: 0.8rem;
+  border-radius: 10px;
+  color: #293264;
+  font-weight: 700;
+  align-self: center;
+  animation: error-message 1.5s linear;
+}
+
+@keyframes error-message {
+  0% {
+    opacity: 1;
+    /* transform: translateY(0px); */
+  }
+
+  100% {
+    opacity: 0;
+    /* transform: translateY(-100px); */
+  }
+}
+
+/* Loader start */
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #4D5B9E;
+  border-top: 5px solid #FFFAD1;
+  border-radius: 50%;
+  animation: spinner 1.5s linear infinite;
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 350px;
+}
+
+/* Loader start */
